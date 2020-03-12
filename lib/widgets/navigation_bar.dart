@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
-class NavigationBar extends StatelessWidget {
+class NavigationBar extends StatefulWidget {
+  NavigationBar({Key key}) : super(key: key);
+
+  @override
+  _NavigationBarState createState() => _NavigationBarState();
+}
+
+class _NavigationBarState extends State<NavigationBar> {
+  String dropdownString = "English";
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,14 +25,29 @@ class NavigationBar extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              _NavBarItem(title: "Episodes"),
+              _NavigationBarItem(title: "Episodes"),
               SizedBox(
                 width: 60,
               ),
-              _NavBarItem(title: "About"),
+              _NavigationBarItem(title: "About"),
               SizedBox(
                 width: 60,
               ),
+              DropdownButton<String>(
+                value: dropdownString,
+                onChanged: (String item) {
+                  setState(() {
+                    dropdownString = item;
+                  });
+                },
+                items: <String>["English", "Korean", "Japanese", "Chinese"]
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              )
             ],
           ),
         ],
@@ -32,9 +56,9 @@ class NavigationBar extends StatelessWidget {
   }
 }
 
-class _NavBarItem extends StatelessWidget {
+class _NavigationBarItem extends StatelessWidget {
   final String title;
-  const _NavBarItem({@required this.title});
+  const _NavigationBarItem({@required this.title});
 
   @override
   Widget build(BuildContext context) {
