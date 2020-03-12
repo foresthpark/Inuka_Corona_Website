@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
           textTheme:
               Theme.of(context).textTheme.apply(fontFamily: 'Open Sans')),
       home: HomeView(),
+      // https://www.alberta.ca/coronavirus-info-for-albertans.aspx#p22780s6
     );
   }
 }
