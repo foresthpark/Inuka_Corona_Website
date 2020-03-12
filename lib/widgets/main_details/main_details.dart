@@ -30,7 +30,7 @@ class MainDetails extends StatelessWidget {
                   subtitle: 'Cases in Alberta and Canada',
                   body:
                       "The cases in Canada have been travel-related and have been isolated to prevent further transmission."),
-              Image.asset("assets/helpPrevent.png")
+              Center(child: Image.asset("assets/helpPrevent.png"))
             ],
           ),
         ],
